@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
+use App\Jobs\TranslateSlug;
 use App\Models\Category;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -45,6 +46,9 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->save();
+
+        //dispatch(new TranslateSlug($topic));
+
         return redirect()->to($topic->link())->with('success', '成功创建主题！');
     }
 
