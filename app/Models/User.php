@@ -58,6 +58,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
+
     public function topics()
     {
         return $this->hasMany(Topic::class);
