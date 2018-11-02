@@ -17,7 +17,7 @@ use Carbon\Carbon;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
 
-    static $password='$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';
+    static $password='$2y$10$JXhFTFRc.fIfirFgYGVcDuPa5.VTMggwloeE3FYPzn7.U9ZH27126';
     $now = Carbon::now()->toDateTimeString();
 
     return [
