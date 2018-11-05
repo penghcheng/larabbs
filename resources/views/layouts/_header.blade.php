@@ -3,8 +3,7 @@
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -30,9 +29,10 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
+               <!-- Authentication Links -->
                 @guest
-                <li><a href="{{ route('login') }}">登录</a></li>
-                <li><a href="{{ route('register') }}">注册</a></li>
+                    <li><a href="{{ route('login') }}">登录</a></li>
+                    <li><a href="{{ route('register') }}">注册</a></li>
                 @else
                     <li>
                         <a href="{{ route('topics.create') }}">
@@ -56,6 +56,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+
                             @can('manage_contents')
                                 <li>
                                     <a href="{{ url(config('administrator.uri')) }}">
@@ -64,6 +65,7 @@
                                     </a>
                                 </li>
                             @endcan
+
                             <li>
                                 <a href="{{ route('users.show', Auth::id()) }}">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -72,18 +74,19 @@
                             </li>
                             <li>
                                 <a href="{{ route('users.edit', Auth::id()) }}">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                     编辑资料
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                                     退出登录
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>

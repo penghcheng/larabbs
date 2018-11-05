@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    我的通知
+我的通知
 @stop
 
 @section('content')

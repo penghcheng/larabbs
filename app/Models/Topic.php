@@ -21,17 +21,17 @@ class Topic extends Model
         return $this->belongsTo(User::class);
     }
 
+
     public function scopeWithOrder($query, $order)
     {
         // 不同的排序，使用不同的数据读取逻辑
-
         switch ($order) {
             case 'recent':
-                $query->recent();
+                $query = $this->recent();
                 break;
 
             default:
-                $query->recentReplied();
+                $query = $this->recentReplied();
                 break;
         }
         // 预加载防止 N+1 问题
@@ -55,5 +55,4 @@ class Topic extends Model
     {
         return route('topics.show', array_merge([$this->id, $this->slug], $params));
     }
-
 }
