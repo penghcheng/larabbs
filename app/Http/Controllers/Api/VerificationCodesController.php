@@ -13,14 +13,13 @@ class VerificationCodesController extends Controller
     {
         $phone = $request->phone;
 
-
         if (!app()->environment('production')) {
             $code = '1234';
 
         } else {
             // 生成4位随机数，左侧补0
             $code = str_pad(random_int(1, 999), 4, 0, STR_PAD_LEFT);
-            //dd($code);
+
             try {
                 $result = $easySms->send($phone, [
                     'content' => '您的验证码是：' . $code . '。请不要把验证码泄露给其他人。',
