@@ -15,6 +15,7 @@ $api->version('v1', [
     ], function($api) {
 
         // 游客可以访问的接口
+
         // 短信验证码
         $api->post('verificationCodes', 'VerificationCodesController@store')->name('api.verificationCodes.store');
         // 用户注册
@@ -29,6 +30,9 @@ $api->version('v1', [
         $api->put('authorizations/current', 'AuthorizationsController@update')->name('api.authorizations.update');
         // 删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
+
+        // 游客可以访问的接口
+        $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
 
         // 需要 token 验证的接口
         $api->group(['middleware' => 'api.auth'], function($api) {
