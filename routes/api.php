@@ -30,30 +30,33 @@ $api->version('v1', [
         $api->put('authorizations/current', 'AuthorizationsController@update')->name('api.authorizations.update');
         // 删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
-
-        // 游客可以访问的接口
+        // 分类列表
         $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
+        //话题列表
+        $api->get('topics', 'TopicsController@index')->name('api.topics.index');
+
+        $api->get('users/{user}/topics', 'TopicsController@userIndex')->name('api.users.topics.index');
+
+
 
         // 需要 token 验证的接口
         $api->group(['middleware' => 'api.auth'], function($api) {
 
             // 当前登录用户信息
             $api->get('user', 'UsersController@me')->name('api.user.show');
-
             // 编辑登录用户信息
             $api->patch('user', 'UsersController@update')->name('api.user.update');
-
             // 图片资源
             $api->post('images', 'ImagesController@store')->name('api.images.store');
-
             // 发布话题
             $api->post('topics', 'TopicsController@store')->name('api.topics.store');
-
             //修改话题
             $api->patch('topics/{topic}', 'TopicsController@update')->name('api.topics.update');
-
             //删除话题
             $api->delete('topics/{topic}', 'TopicsController@destroy')->name('api.topics.destroy');
+
+
+
 
         });
 
