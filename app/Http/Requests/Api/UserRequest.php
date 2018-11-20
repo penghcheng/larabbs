@@ -2,21 +2,19 @@
 
 namespace App\Http\Requests\Api;
 
-use Dingo\Api\Http\FormRequest;
-
 class UserRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return true;
-    }
-
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
-        switch($this->method()) {
+        switch ($this->method()) {
             case 'POST':
                 return [
-                    'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name',
+                    'name' => 'required|string|max:255',
                     'password' => 'required|string|min:6',
                     'verification_key' => 'required|string',
                     'verification_code' => 'required|string',
@@ -39,7 +37,6 @@ class UserRequest extends FormRequest
         return [
             'verification_key' => '短信验证码 key',
             'verification_code' => '短信验证码',
-            'introduction' => '个人简介',
         ];
     }
 

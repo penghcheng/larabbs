@@ -10,7 +10,7 @@ return [
 
         // 默认可用的发送网关
         'gateways' => [
-            'huyi',
+            'yunpian',
         ],
     ],
     // 可用的网关配置
@@ -18,9 +18,8 @@ return [
         'errorlog' => [
             'file' => '/tmp/easy-sms.log',
         ],
-        'huyi' => [
-            'api_id' => env('HUYIWUXIAN_APIID'),
-            'api_key' => env('HUYIWUXIAN_APIKEY'),
+        'yunpian' => [
+            'api_key' => env('YUNPIAN_API_KEY'),
         ],
-    ],
+    ]
 ];

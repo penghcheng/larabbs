@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -168,7 +169,7 @@ return [
     */
 
     'auth' => [
-
+        'jwt' => 'Dingo\Api\Auth\Provider\JWT',
     ],
 
     /*
@@ -230,8 +231,8 @@ return [
     ],
 
     /*
-    * 接口频率限制
-    */
+     * 接口频率限制
+     */
     'rate_limits' => [
         // 访问频率限制，次数/分钟
         'access' => [
@@ -244,9 +245,4 @@ return [
             'limit'  => env('SIGN_RATE_LIMITS', 10),
         ],
     ],
-
-    'auth' => [
-        'jwt' => 'Dingo\Api\Auth\Provider\JWT',
-    ],
-
 ];

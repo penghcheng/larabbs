@@ -33,7 +33,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name', 'phone', 'email', 'password', 'introduction', 'avatar',
-        'weixin_openid', 'weixin_unionid'
+        'weixin_openid', 'weixin_unionid', 'registration_id'
     ];
 
     /**
@@ -44,18 +44,6 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-
-    // Rest omitted for brevity
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
 
     public function topics()
     {
@@ -103,5 +91,23 @@ class User extends Authenticatable implements JWTSubject
         $this->attributes['avatar'] = $path;
     }
 
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

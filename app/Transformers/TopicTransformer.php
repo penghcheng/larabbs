@@ -36,5 +36,4 @@ class TopicTransformer extends TransformerAbstract
     {
         return $this->item($topic->category, new CategoryTransformer());
     }
-
 }
